@@ -1,21 +1,28 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import Controls from './components/Controls/Controls';
 import List from './components/List/List';
 import { getPokemomData } from './services/data';
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
+  const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPokemomData();
+      const data = await getPokemomData(query);
       setPokemon(data.results);
-      console.log(data);
+      console.log(data.results);
+      setLoading(false);
     };
-    fetchData();
-  }, []);
+    if (loading) {
+      fetchData();
+    }
+  }, [loading]);
   return (
     <div className="App">
+      <Controls query={query} setQuery={setQuery} setLoading={setLoading} />
       <List pokemon={pokemon} />
     </div>
   );
