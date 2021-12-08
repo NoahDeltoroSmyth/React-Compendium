@@ -13,8 +13,9 @@ function App() {
     const fetchData = async () => {
       const data = await getPokemomData(query);
       setPokemon(data.results);
-      console.log(data.results);
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1200);
     };
     if (loading) {
       fetchData();
@@ -22,8 +23,13 @@ function App() {
   }, [loading]);
   return (
     <div className="App">
-      <Controls query={query} setQuery={setQuery} setLoading={setLoading} />
-      <List pokemon={pokemon} />
+      {loading && <span className="loader"></span>}
+      {!loading && (
+        <>
+          <Controls query={query} setQuery={setQuery} setLoading={setLoading} />
+          <List pokemon={pokemon} />
+        </>
+      )}
     </div>
   );
 }
