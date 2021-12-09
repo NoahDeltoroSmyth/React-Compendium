@@ -1,6 +1,10 @@
 import React from 'react';
 
-export default function List({ pokemon, currentPage, setCurrentPage }) {
+export default function List({ pokemon, currentPage, setCurrentPage, setLoading }) {
+  const handleNextPage = () => {
+    setCurrentPage((prevState) => ++prevState);
+    setLoading(true);
+  };
   return (
     <div className="poke-container">
       {pokemon.map((p) => (
@@ -9,7 +13,7 @@ export default function List({ pokemon, currentPage, setCurrentPage }) {
         </p>
       ))}
       <div>Page: {currentPage}</div>
-      <button onClick={() => setCurrentPage((prevState) => ++prevState)}>Next Page</button>
+      <button onClick={handleNextPage}>Next Page</button>
     </div>
   );
 }

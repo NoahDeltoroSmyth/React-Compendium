@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPokemomData(query, order);
+      const data = await getPokemomData(query, order, currentPage);
       setPokemon(data.results);
       console.log(data.results);
       setTimeout(() => {
@@ -23,14 +23,20 @@ function App() {
     if (loading) {
       fetchData();
     }
-  }, [loading, query, order]);
+  }, [loading, query, order, currentPage]);
   return (
     <div className="App">
       {loading && <span className="loader"></span>}
       {!loading && (
         <>
           <Controls query={query} setQuery={setQuery} setLoading={setLoading} setOrder={setOrder} />
-          <List pokemon={pokemon} />
+          <List
+            pokemon={pokemon}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            loading={loading}
+            setLoading={setLoading}
+          />
         </>
       )}
     </div>
