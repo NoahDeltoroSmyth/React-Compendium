@@ -1,6 +1,15 @@
 import React from 'react';
 
-export default function Controls({ query, setQuery, setLoading, order, setOrder }) {
+export default function Controls({
+  query,
+  setQuery,
+  setLoading,
+  order,
+  setOrder,
+  types,
+  setSelectedTypes,
+  selectedTypes,
+}) {
   return (
     <>
       <input
@@ -13,7 +22,17 @@ export default function Controls({ query, setQuery, setLoading, order, setOrder 
         <option value="asc">Ascending</option>
         <option value="desc">Descending</option>
       </select>
-      <button onClick={() => setLoading(true)}>Search</button>
+      <select value={selectedTypes} onChange={(e) => setSelectedTypes(e.target.value)}>
+        <option value="all">All</option>
+        {types.map((type) => (
+          <option key={type} value={type}>
+            {type}
+          </option>
+        ))}
+      </select>
+      <button className="search" onClick={() => setLoading(true)}>
+        Search
+      </button>
     </>
   );
 }
