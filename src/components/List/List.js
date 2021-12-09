@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function List({ pokemon }) {
+export default function List({ pokemon, currentPage, setCurrentPage }) {
   return (
     <div className="poke-container">
       {pokemon.map((p) => (
@@ -8,6 +8,8 @@ export default function List({ pokemon }) {
           {p.pokemon} <img src={p.url_image}></img>
         </p>
       ))}
+      <div>Page: {currentPage}</div>
+      <button onClick={() => setCurrentPage((prevState) => ++prevState)}>Next Page</button>
     </div>
   );
 }
