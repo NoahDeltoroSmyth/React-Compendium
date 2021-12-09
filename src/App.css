@@ -2,6 +2,25 @@
   text-align: center;
 }
 
+.poke-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img {
+  width: 150px;
+}
+
+p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px green solid;
+  margin: 10px;
+  border-radius: 10px;
+}
+
 body {
   background-color: tomato;
 }
