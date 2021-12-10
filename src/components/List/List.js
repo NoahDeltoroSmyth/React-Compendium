@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Button } from '@mui/material';
 export default function List({ pokemon, currentPage, setCurrentPage, setLoading }) {
   const handleNextPage = () => {
     setCurrentPage((prevState) => ++prevState);
@@ -20,10 +20,10 @@ export default function List({ pokemon, currentPage, setCurrentPage, setLoading 
         </div>
       ))}
       <div className="next-page">
-        <div>Page: {currentPage}</div>
-        <button className="next-button" onClick={handleNextPage}>
+        <div className="pagenumber">Page: {currentPage}</div>
+        <Button className="next-button" color="success" variant="outlined" onClick={handleNextPage}>
           Next Page
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ function App() {
       // console.log(data.results);
       setTimeout(() => {
         setLoading(false);
-      }, 1200);
+      }, 900);
     };
     if (loading) {
       fetchData();
