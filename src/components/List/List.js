@@ -5,6 +5,11 @@ export default function List({ pokemon, currentPage, setCurrentPage, setLoading 
     setCurrentPage((prevState) => ++prevState);
     setLoading(true);
   };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevState) => --prevState);
+    setLoading(true);
+  };
   return (
     <div className="poke-container">
       {pokemon.map((p) => (
@@ -19,8 +24,11 @@ export default function List({ pokemon, currentPage, setCurrentPage, setLoading 
           <p>shape: {p.shape}</p>
         </div>
       ))}
-      <div className="next-page">
+      <div className="page-loader">
         <div className="pagenumber">Page: {currentPage}</div>
+        <Button className="prev-button" variant="outlined" onClick={handlePrevPage}>
+          Previous Page
+        </Button>
         <Button className="next-button" color="success" variant="outlined" onClick={handleNextPage}>
           Next Page
         </Button>

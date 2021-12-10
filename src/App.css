@@ -17,7 +17,7 @@
   margin-bottom: 10px;
 }
 
-.next-page {
+.page-loader {
   display: flex;
   flex-direction: column;
   width: 100%;
